@@ -44,9 +44,21 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     }
 
+    function renderBook(book) {
+        const showDiv =  document.querySelector("div#show-panel")
+            showDiv.innerHTML = 
+            `
+            <h1> ${book.title}</h1>
+            <img src="${book.img_url}">
+            <p> ${book.description} </p>
+            <h3> users</h3>`
+        
+    }
+
   document.addEventListener("click", (event) => {
       console.log(event.target)
-      if(event.target) {
+      const li = document.querySelector("#list > li")
+      if(event.target === li) {
           const bookId = event.target.dataset.id 
           fetch(`${BOOK_URL}/${bookId}`)
           .then(resp => resp.json())
