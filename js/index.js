@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
       const li = document.querySelector("#list > li")
     //   document.querySelector("#list > li")
       if(event.target ) {
+          //figure out the how to correctly toggle thru the list
           const bookId = event.target.dataset.id 
           fetch(`${BOOK_URL}/${bookId}`)
           .then(resp => resp.json())
