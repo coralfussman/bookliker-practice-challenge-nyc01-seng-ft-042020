@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
         books.forEach(book => {
             const ulList =  document.querySelector("#list")
             const li = document.createElement("li")
+            li.className = "lister"
             li.dataset.id = book.id
             //console.dir(li)
             li.innerText = book.title
@@ -36,6 +37,9 @@ document.addEventListener("DOMContentLoaded", function() {
             <h3> ${book.user}</h3>
         
             `
+            const button = document.createElement('button')
+                button.innerText = "like"
+                showDiv.append(button)
 
             //thumbnail
             //description
@@ -50,22 +54,40 @@ document.addEventListener("DOMContentLoaded", function() {
             `
             <h1> ${book.title}</h1>
             <img src="${book.img_url}">
-            <p> ${book.description} </p>
-            <h3> users</h3>`
+            <p> ${book.description} </p>`
+            book.users.forEach(user => {
+                const h3 = document.createElement('h3')
+                h3.innerText = user.username
+                showDiv.appendChild(h3)
+
+            });
+            const button = document.createElement('button')
+            button.innerText = "like"
+            showDiv.append(button)
+            
         
     }
 
+    //how to make this work as a helper function
+    // const getUser = user => {
+    //     book.users.forEach(user => {
+    //        const h3 = document.createElement('h3')
+    //        h3.innerText = user.username
+    //         showDiv.appendChild(h3)
+    //     });
+    // }
+
+
   document.addEventListener("click", (event) => {
-      console.log(event.target)
       const li = document.querySelector("#list > li")
-      if(event.target === li) {
+    //   document.querySelector("#list > li")
+      if(event.target ) {
           const bookId = event.target.dataset.id 
           fetch(`${BOOK_URL}/${bookId}`)
           .then(resp => resp.json())
           .then(book => renderBook(book)) 
-        
-       
         }
+
       })
     //   function findBook(books) {
     //     books.find(function(id) {
