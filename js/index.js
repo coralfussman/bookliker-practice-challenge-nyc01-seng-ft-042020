@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", function() {
           .then(book => renderBook(book)) 
         
        
-        })
-      }
+        }
+      })
     //   function findBook(books) {
     //     books.find(function(id) {
     //         return id === event.target.dataset.id
@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
       //document.querySelector("#list ${event.id}")
 
-  })
+//   })
 
 //   fetch(`${BOOK_URL}/${id}` {
         
